@@ -1,7 +1,7 @@
 /**
  * 
  */
-package me.sumitkawatra.pizza;
+package me.sumitkawatra.pizza.resource;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -15,7 +15,7 @@ import javax.ws.rs.core.MediaType;
 @Path("/")
 public class HealthCheck {
 
-	private static final String HELLO = "Hello World! I'm Alive";
+	private static final String HELLO = "Hello World! We are online, Please Serve you a Pizza :)";
 	
 	@GET
 	@Produces(value=MediaType.TEXT_PLAIN)
