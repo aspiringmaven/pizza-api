@@ -11,12 +11,17 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import me.sumitkawatra.pizza.domain.Topping;
 import me.sumitkawatra.pizza.service.ToppingService;
 
 @Path("/toppings")
+@Component
 public class ToppingResource {
-
+	
+	@Autowired
 	private ToppingService toppingService;
 
 	public ToppingResource() {
