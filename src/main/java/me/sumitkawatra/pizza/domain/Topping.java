@@ -3,12 +3,22 @@
  */
 package me.sumitkawatra.pizza.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+
 /**
  * @author sumitkawatra
  *
  */
+@Entity
 public class Topping {
-
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "topping_seq_gen")
+	@SequenceGenerator(name = "topping_seq_gen", sequenceName = "topping_seq")
 	private Long id;
 	private String name;
 

@@ -3,12 +3,23 @@
  */
 package me.sumitkawatra.pizza.domain;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
+
 /**
  * @author sumitkawatra
  *
  */
+@Entity
 public class Base {
-
+	
+	@Id 
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "base_seq_gen")
+	@SequenceGenerator(name = "base_seq_gen", sequenceName = "base_seq")
 	private Long id;
 	private String name;
 
@@ -24,7 +35,6 @@ public class Base {
 	 * @param name
 	 */
 	public Base(Long id, String name) {
-		super();
 		this.id = id;
 		this.name = name;
 	}
