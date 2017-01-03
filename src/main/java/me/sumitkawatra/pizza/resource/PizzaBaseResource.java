@@ -40,22 +40,22 @@ public class PizzaBaseResource {
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Base> listPizzaBases() {
-		return null;
+		return pizzaBaseService.listBase();
 	}
 
 	@GET
 	@Path("/{baseName}")
 	@Produces(MediaType.APPLICATION_JSON)
-	public Base getPizzaBase(@PathParam("baseName") String baseName) {
-		return new Base();
+	public Base getPizzaBase(@PathParam("baseName") String pizzaBaseName) {
+		return pizzaBaseService.getByName(pizzaBaseName);
 	}
 
 	@POST
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Base addPizzaBase(@BeanParam Base base) {
-		return new Base();
+	public Base savePizzaBase(Base pizzaBase) {
+		return pizzaBaseService.savePizzaBase(pizzaBase);
 	}
 
 	/**
