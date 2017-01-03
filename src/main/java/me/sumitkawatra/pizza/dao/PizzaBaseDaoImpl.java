@@ -3,7 +3,6 @@
  */
 package me.sumitkawatra.pizza.dao;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,7 +19,7 @@ import me.sumitkawatra.pizza.domain.Base;
  *
  */
 @Repository
-public class PIzzaBaseDaoImpl implements PizzaBaseDao {
+public class PizzaBaseDaoImpl implements PizzaBaseDao {
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -28,7 +27,7 @@ public class PIzzaBaseDaoImpl implements PizzaBaseDao {
 	/**
 	 * 
 	 */
-	public PIzzaBaseDaoImpl() {
+	public PizzaBaseDaoImpl() {
 
 	}
 
