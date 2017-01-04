@@ -1,0 +1,60 @@
+[
+  {
+    "id": 50,
+    "name": "Special Pizza",
+    "base": {
+      "id": 50,
+      "name": "Italian"
+    },
+    "toppings": [
+      {
+        "id": 50,
+        "name": "Capsicum"
+      },
+      {
+        "id": 52,
+        "name": "Cheese"
+      },
+      {
+        "id": 51,
+        "name": "Onion"
+      }
+    ],
+    "price": 500
+  },
+  {
+    "id": 51,
+    "name": "Desi Pizza",
+    "base": {
+      "id": 51,
+      "name": "Atta"
+    },
+    "toppings": [
+      {
+        "id": 54,
+        "name": "Adhrak"
+      },
+      {
+        "id": 50,
+        "name": "Capsicum"
+      },
+      {
+        "id": 52,
+        "name": "Cheese"
+      },
+      {
+        "id": 53,
+        "name": "Pyaaz"
+      },
+      {
+        "id": 51,
+        "name": "Onion"
+      },
+      {
+        "id": 55,
+        "name": "Lahusan"
+      }
+    ],
+    "price": 2000
+  }
+]
