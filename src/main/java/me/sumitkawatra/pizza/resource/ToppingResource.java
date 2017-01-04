@@ -2,7 +2,6 @@ package me.sumitkawatra.pizza.resource;
 
 import java.util.List;
 
-import javax.ws.rs.BeanParam;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -31,22 +30,22 @@ public class ToppingResource {
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	public List<Topping> listAllToppings() {
-		return null;
+		return toppingService.listTopping();
 	}
 
 	@GET
 	@Path("/{toppingName}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public Topping getTopping(@PathParam("toppingName") String toppingName) {
-		return new Topping();
+		return toppingService.getByName(toppingName);
 	}
 
 	@POST
 	@Path("/")
 	@Produces(MediaType.APPLICATION_JSON)
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Topping addTopping(@BeanParam Topping topping) {
-		return new Topping();
+	public Topping addTopping(Topping topping) {
+		return toppingService.saveTopping(topping);
 	}
 
 	/**
