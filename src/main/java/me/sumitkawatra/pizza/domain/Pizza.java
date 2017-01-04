@@ -4,6 +4,7 @@
 package me.sumitkawatra.pizza.domain;
 
 import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
@@ -26,11 +27,11 @@ public class Pizza {
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pizza_seq_gen")
 	@SequenceGenerator(name = "pizza_seq_gen", sequenceName = "pizza_seq")
-	private Long id;
+	private BigInteger id;
 	private String name;
 	@ManyToOne
 	private Base base;
-	@ManyToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, targetEntity = me.sumitkawatra.pizza.domain.Topping.class)
+	@ManyToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL, targetEntity = me.sumitkawatra.pizza.domain.Topping.class)
 	private Set<Topping> toppings;
 
 	private BigDecimal price;
@@ -49,7 +50,7 @@ public class Pizza {
 	 * @param toppings
 	 * @param price
 	 */
-	public Pizza(Long id, String name, Base base, Set<Topping> toppings, BigDecimal price) {
+	public Pizza(BigInteger id, String name, Base base, Set<Topping> toppings, BigDecimal price) {
 		super();
 		this.id = id;
 		this.name = name;
@@ -61,7 +62,7 @@ public class Pizza {
 	/**
 	 * @return the id
 	 */
-	public Long getId() {
+	public BigInteger getId() {
 		return id;
 	}
 
@@ -69,7 +70,7 @@ public class Pizza {
 	 * @param id
 	 *            the id to set
 	 */
-	public void setId(Long id) {
+	public void setId(BigInteger id) {
 		this.id = id;
 	}
 
