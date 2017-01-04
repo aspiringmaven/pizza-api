@@ -8,8 +8,6 @@ import java.util.List;
 
 import org.hibernate.Query;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import me.sumitkawatra.pizza.domain.Base;
@@ -19,10 +17,7 @@ import me.sumitkawatra.pizza.domain.Base;
  *
  */
 @Repository
-public class PizzaBaseDaoImpl implements PizzaBaseDao {
-
-	@Autowired
-	private SessionFactory sessionFactory;
+public class PizzaBaseDaoImpl extends DaoSupport implements PizzaBaseDao {
 
 	/**
 	 * 
@@ -31,16 +26,8 @@ public class PizzaBaseDaoImpl implements PizzaBaseDao {
 
 	}
 
-	public SessionFactory getSessionFactory() {
-		return sessionFactory;
-	}
-
-	public void setSessionFactory(SessionFactory sessionFactory) {
-		this.sessionFactory = sessionFactory;
-	}
-
 	public Base savePizzaBase(Base pizzaBase) {
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		Long pizzaBaseId = (Long) session.save(pizzaBase);
 		session.flush();
@@ -52,7 +39,7 @@ public class PizzaBaseDaoImpl implements PizzaBaseDao {
 	@SuppressWarnings("unchecked")
 	public List<Base> listBase() {
 		List<Base> pizzaBases = new ArrayList<Base>();
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Base");
 		pizzaBases = query.list();
@@ -63,7 +50,7 @@ public class PizzaBaseDaoImpl implements PizzaBaseDao {
 
 	public Base getPizzaBase(Long pizzaBaseId) {
 		Base pizzaBase = new Base();
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		pizzaBase = (Base) session.get(Base.class, pizzaBaseId);
 		session.getTransaction().commit();
@@ -73,7 +60,7 @@ public class PizzaBaseDaoImpl implements PizzaBaseDao {
 
 	public Base getByName(String pizzaBaseName) {
 		Base pizzaBase = new Base();
-		Session session = sessionFactory.openSession();
+		Session session = getSessionFactory().openSession();
 		session.beginTransaction();
 		Query query = session.createQuery("from Base where name = :pizzaBaseName");
 		query.setString("pizzaBaseName", pizzaBaseName);
