@@ -3,17 +3,23 @@
  */
 package me.sumitkawatra.pizza.filter;
 
+import java.io.IOException;
+
+import javax.ws.rs.container.ContainerRequestContext;
+import javax.ws.rs.container.ContainerResponseContext;
+import javax.ws.rs.container.ContainerResponseFilter;
+import javax.ws.rs.ext.Provider;
+
 /**
  * @author sumitkawatra
  *
  */
-public class PizzaResponseFilter {
+@Provider
+public class PizzaResponseFilter  implements ContainerResponseFilter{
 
-	/**
-	 * 
-	 */
-	public PizzaResponseFilter() {
-		// TODO Auto-generated constructor stub
+	public void filter(ContainerRequestContext containerRequestContext, ContainerResponseContext containerResponseContext) throws IOException {
+		containerResponseContext.getHeaders().add("X-Powered-By", "Pizza Dev Center :-)");
+		
 	}
 
 }
